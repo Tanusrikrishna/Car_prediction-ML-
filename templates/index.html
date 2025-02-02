@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: black; 
+            color: gold;
+            text-shadow: 0px 0px 15px red; 
+        }
+        .container form { 
+            max-width: 400px;
+            text-align:display;
+            margin: 50px auto; 
+            padding:30px; 
+            background: black; 
+            box-shadow: 0px 0px 15px red; 
+            border-radius: 10px;
+            border: 2px solid gold;
+        }
+        
+        .container { 
+            max-width: 400px; 
+            margin: 50px auto; 
+            padding:30px; 
+            background: black; 
+            box-shadow: 0px 0px 15px red; 
+            border-radius: 10px;
+            border: 2px solid gold;
+        }
+        input, select, button { 
+            width: 90%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            box-shadow: 0px 0px 15px red;
+            border-radius: 5px; 
+            border: 1px solid gold; 
+            background-color: black;
+            color: gold;
+       }
+       
+       
+        button { 
+            background-color: gold; 
+            color: black; 
+            font-size: 16px; 
+            cursor: pointer; 
+            font-weight: bold;
+            border: none;
+        }
+        button:hover {
+            background-color: #d4af37; /* Darker shade of gold */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Car Price Prediction</h2>
+        <form action="/predict" method="post">
+            <label>Company:</label>
+            <input type="text" name="company" required>
+
+            <label>Year:</label>
+            <input type="number" name="year" min="2000" max="2025" required>
+
+            <label>Kilometers Driven:</label>
+            <input type="number" name="kms_driven" required>
+
+            <label>Fuel Type:</label>
+            <select name="fuel_type">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">CNG</option>
+                <option value="Electric">Electric</option>
+            </select>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction %}
+            <h3>{{ prediction }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
